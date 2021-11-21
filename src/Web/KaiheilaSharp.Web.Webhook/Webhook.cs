@@ -49,6 +49,8 @@ public class Webhook
 
     public Webhook(string endpoint)
     {
+        _ipAddress = IPAddress.Loopback;
+        _port = 5000;
         _endpoint = endpoint;
     }
     public Webhook(string endpoint, IPAddress ipAddress, int port)
@@ -84,13 +86,10 @@ public class Webhook
     {
         var builder = WebApplication.CreateBuilder();
         builder.Logging.ClearProviders();
-        if (_ipAddress is not null && _port > 0)
+        builder.WebHost.UseKestrel(options =>
         {
-            builder.WebHost.UseKestrel(options =>
-            {
-                options.Listen(_ipAddress, _port);
-            });
-        }
+            options.Listen(_ipAddress, _port);
+        });
 
         _webApplicationConfigurator.Invoke(builder);
 
