@@ -34,7 +34,7 @@ public class Webhook
     private string _verifyToken;
     private readonly string _endpoint;
     private readonly IPAddress _ipAddress;
-    private readonly int _port = -1;
+    private readonly int _port;
     private Action<WebApplicationBuilder> _webApplicationConfigurator;
 
     #endregion
