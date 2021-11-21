@@ -1,8 +1,30 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{31771E7F-1D28-401D-8472-F42DC5EBA2DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaiheilaSharp.Web.Webhook", "src\Web\KaiheilaSharp.Web.Webhook\KaiheilaSharp.Web.Webhook.csproj", "{901AA837-50FE-4CAA-9C27-1FFB015D62C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{7046018F-A9AE-438C-BE52-0F35844F82F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KaiheilaSharp.Test.Local", "src\Test\KaiheilaSharp.Test.Local\KaiheilaSharp.Test.Local.csproj", "{E9C8A544-9222-43DF-8B7C-029BFDC10579}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{901AA837-50FE-4CAA-9C27-1FFB015D62C5} = {31771E7F-1D28-401D-8472-F42DC5EBA2DF}
+		{E9C8A544-9222-43DF-8B7C-029BFDC10579} = {7046018F-A9AE-438C-BE52-0F35844F82F9}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{901AA837-50FE-4CAA-9C27-1FFB015D62C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901AA837-50FE-4CAA-9C27-1FFB015D62C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901AA837-50FE-4CAA-9C27-1FFB015D62C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901AA837-50FE-4CAA-9C27-1FFB015D62C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9C8A544-9222-43DF-8B7C-029BFDC10579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9C8A544-9222-43DF-8B7C-029BFDC10579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9C8A544-9222-43DF-8B7C-029BFDC10579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9C8A544-9222-43DF-8B7C-029BFDC10579}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
