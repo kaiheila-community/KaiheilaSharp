@@ -512,3 +512,6 @@ $RECYCLE.BIN/
 
 # Development configuration file
 *.Development.json
+
+# Local Test Project file
+/src/Test/KaiheilaSharp.Test.Local/*.cs
