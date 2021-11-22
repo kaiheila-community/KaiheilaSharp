@@ -3,9 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+    <NoWarn>$(NoWarn);1591</NoWarn>
     <Nullable>disable</Nullable>
     <IsPackable>true</IsPackable>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <PackageId>KaiheilaSharp.Web.Webhook</PackageId>
     <Authors>LiamSho</Authors>
     <Owner>LiamSho</Owner>
@@ -19,6 +20,11 @@
     <RepositoryUrl>https://github.com/KaiheilaSharpGroup/KaiheilaSharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <NeutralLanguage>zh-Hans-CN</NeutralLanguage>
+    <Title>KaiheilaSharp.Web.Webhook</Title>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
