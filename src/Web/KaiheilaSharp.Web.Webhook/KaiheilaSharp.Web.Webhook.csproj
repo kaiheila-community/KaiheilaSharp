@@ -4,11 +4,29 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>disable</Nullable>
+        <IsPackable>true</IsPackable>
+        <PackageVersion>1.0.0</PackageVersion>
+        <PackageId>KaiheilaSharp.Web.Webhook</PackageId>
+        <Authors>LiamSho</Authors>
+        <Owner>LiamSho</Owner>
+        <Description>开黑啦机器人 Webhook 连接库</Description>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Copyright>Copyright (C) 2021 KaiheilaSharpGroup</Copyright>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageTags>kaiheila;sdk;webhook</PackageTags>
+        <PackageProjectUrl>https://github.com/KaiheilaSharpGroup/KaiheilaSharp</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/KaiheilaSharpGroup/KaiheilaSharp</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <NeutralLanguage>zh-Hans-CN</NeutralLanguage>      
     </PropertyGroup>
-
 
     <ItemGroup>
       <FrameworkReference Include="Microsoft.AspNetCore.App" />
     </ItemGroup>
   
+    <ItemGroup>
+      <None Include="..\..\..\icon.png" Pack="true" PackagePath="\" />
+      <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>  
 </Project>
