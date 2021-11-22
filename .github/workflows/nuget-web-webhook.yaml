@@ -1,4 +1,4 @@
-name: publish-web-webhook
+name: nuget-web-webhook
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET-VERSION }}
 
       - name: Install dependencies
-        working-directory: ${{ nv.PROJECT-DIRECTORY }}
+        working-directory: ${{ env.PROJECT-DIRECTORY }}
         run: dotnet restore
 
       - name: Build
