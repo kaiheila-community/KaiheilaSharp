@@ -151,13 +151,21 @@ public class Webhook
 
             if (data is null)
             {
-                throw new Exception("No data received.");
+                logger.LogError("Received null data from {address}:{p}.",
+                    context.Connection.RemoteIpAddress is null ? "NULL" : context.Connection.RemoteIpAddress,
+                    context.Connection.RemotePort);
+                return;
             }
 
             var json = JsonDocument.Parse(data).RootElement;
             var encrypted = json.TryGetProperty("encrypt", out var encryptString);
             if (encrypted)
             {
+                if (key is "" or null)
+                {
+                    logger.LogError("Encrypted message received but encryption key is empty.");
+                    return;
+                }
                 logger.LogDebug("Encrypted message received.");
                 var message = await WebhookSecret.Decrypt(encryptString.GetString(), key);
                 data = message;
@@ -165,18 +173,19 @@ public class Webhook
                 logger.LogDebug("Encrypted message decrypt successfully.");
             }
             var isChallenge = json.GetProperty("s").GetInt32() == 0 && json.GetProperty("d").GetProperty("channel_type").GetString() == "WEBHOOK_CHALLENGE";
+            var requireVerification = json.GetProperty("d").TryGetProperty("verify_token", out var verifyTokenProperty);
+            if (verifyToken is not ("" or null) && requireVerification)
+            {
+                if (verifyTokenProperty.GetString() != verifyToken)
+                {
+                    logger.LogError("Message verify token invalid. Please check your security system.");
+                    return;
+                }
+            }
             if (isChallenge)
             {
                 logger.LogInformation("Received a Webhook challenge request.");
                 var challenge = json.GetProperty("d").GetProperty("challenge").GetString();
-                var token = json.GetProperty("d").GetProperty("verify_token").GetString();
-                if (verifyToken is not "" && verifyToken != string.Empty)
-                {
-                    if (token != verifyToken)
-                    {
-                        throw new Exception("Token invalid.");
-                    }
-                }
                 context.Response.StatusCode = 200;
                 await context.Response.WriteAsJsonAsync(new Dictionary<string,string>
                 {

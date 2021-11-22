@@ -19,17 +19,17 @@ namespace KaiheilaSharp.Web.Webhook;
 // Deflate code are from https://github.com/kaiheila-community/kaiheila-dotnet
 // Licensed under MIT license
 
-internal class WebhookMiddleware
+public class WebhookMiddleware
 {
     private readonly RequestDelegate _next;
     private const string CompressKey = "compress";
 
-    internal WebhookMiddleware(RequestDelegate next)
+    public WebhookMiddleware(RequestDelegate next)
     {
         _next = next;
     }
 
-    internal async Task Invoke(HttpContext context, ILogger<WebhookMiddleware> logger)
+    public async Task Invoke(HttpContext context, ILogger<WebhookMiddleware> logger)
     {
         var s = Stopwatch.StartNew();
         if (context.Request.Query.ContainsKey(CompressKey) && context.Request.Query[CompressKey] == "0")
